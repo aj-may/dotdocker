@@ -1,0 +1,53 @@
+{
+  "name": "dotdocker",
+  "version": "0.0.0-development",
+  "description": "A utility to help setup a docker development environment with host based routing",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "dockerode": "^2.5.8",
+    "execa": "^1.0.0",
+    "listr": "^0.14.3",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-codfish": "^2.5.0",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
+    "markdownlint-cli": "^0.16.0",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.12"
+  },
+  "scripts": {
+    "dev": "babel-node src/index.js",
+    "fix": "npm run format && npm run lint -- --fix",
+    "format": "prettier --write \"**/*.{json,css,scss,md,html}\"",
+    "lint": "eslint .",
+    "lint:md": "markdownlint -i node_modules -i build .",
+    "build": "babel src -d dist --copy-files",
+    "semantic-release": "semantic-release"
+  },
+  "bin": {
+    "dotdocker": "./bin/dotdocker.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aj-may/dotdocker.git"
+  },
+  "author": "A.J. May (https://github.com/aj-may)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aj-may/dotdocker/issues"
+  },
+  "homepage": "https://github.com/aj-may/dotdocker#readme",
+  "preferGlobal": true,
+  "engines": {
+    "node": ">= 12"
+  }
+}
