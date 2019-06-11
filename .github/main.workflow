@@ -17,12 +17,12 @@ action "Install Dependencies" {
 action "Build" {
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   needs = ["Install Dependencies"]
-  args = "build"
+  args = "run build"
 }
 
 action "Release" {
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   needs = ["Build"]
-  args = "semantic-release"
+  args = "run semantic-release"
   secrets = ["GH_TOKEN", "NPM_TOKEN"]
 }
