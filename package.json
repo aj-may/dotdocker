@@ -21,6 +21,7 @@
     "husky": "^2.4.0",
     "lint-staged": "^8.2.0",
     "markdownlint-cli": "^0.16.0",
+    "pkg": "^4.4.0",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.12"
   },
@@ -30,7 +31,7 @@
     "format": "prettier --write \"**/*.{json,css,scss,md,html}\"",
     "lint": "eslint .",
     "lint:md": "markdownlint -i node_modules -i build .",
-    "build": "babel src -d dist --copy-files",
+    "build": "babel src -d build --copy-files && pkg --targets=node12-macos --out-path=dist .",
     "semantic-release": "semantic-release"
   },
   "bin": {
