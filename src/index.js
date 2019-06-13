@@ -5,7 +5,8 @@ import createContainer from './tasks/createContainer';
 import startContainer from './tasks/startContainer';
 import stopContainer from './tasks/stopContainer';
 import setupDNS from './tasks/setupDNS';
-import proxyConfig from './proxyConfig';
+import proxyConfig from './containers/proxyConfig';
+import dnsmasqConfig from './containers/dnsmasqConfig';
 
 program
   .version('1.0.0')
@@ -13,25 +14,35 @@ program
 
 program
   .command('start')
-  .description('Pull and start the proxy container and configure DNS')
+  .description('Pull and start the dotdocker containers and configure DNS')
   .action(() =>
     new Listr([
       pullImage(proxyConfig),
       createContainer(proxyConfig),
       startContainer(proxyConfig),
+      pullImage(dnsmasqConfig),
+      createContainer(dnsmasqConfig),
+      startContainer(dnsmasqConfig),
       setupDNS(),
     ]).run(),
   );
 
 program
   .command('stop')
-  .description('Stop the proxy container')
-  .action(() => new Listr([stopContainer(proxyConfig)]).run());
+  .description('Stop the dotdocker containers')
+  .action(() => new Listr([stopContainer(proxyConfig), stopContainer(dnsmasqConfig)]).run());
 
 program
   .command('restart')
-  .description('Restart the proxy container')
-  .action(() => new Listr([stopContainer(proxyConfig), startContainer(proxyConfig)]).run());
+  .description('Restart the dotdocker containers')
+  .action(() =>
+    new Listr([
+      stopContainer(proxyConfig),
+      stopContainer(dnsmasqConfig),
+      startContainer(proxyConfig),
+      startContainer(dnsmasqConfig),
+    ]).run(),
+  );
 
 program.parse(process.argv);
 if (!program.args.length) program.help();
