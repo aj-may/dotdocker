@@ -6,8 +6,16 @@ const docker = new Docker();
 const startContainer = ({ name }) => ({
   title: `Starting ${name}`,
   task: async () => {
-    const { Id: id } = await getContainer(name);
-    return docker.getContainer(id).start();
+    try {
+      const { Id: id } = await getContainer(name);
+      await docker.getContainer(id).start();
+    } catch (err) {
+      const match = err.json.message.match(
+        /Bind for 0\.0\.0\.0:(\d+): unexpected error \(Failure EADDRINUSE\)/,
+      );
+      if (match) throw new Error(`Port ${match[1]} is already in use.`);
+      throw err;
+    }
   },
   skip: async () => {
     const container = await getContainer(name);
