@@ -8,6 +8,19 @@ A utility to help setup a docker development environment with host based routing
 
 ## Installation
 
+### Using homebrew
+
+```sh
+brew install aj-may/brew/dotdocker
+```
+
+or if you prefer to tap using ssh
+
+```sh
+brew tap aj-may/brew git@github.com:aj-may/brew.git
+brew install dotdocker
+```
+
 ### Using npm
 
 To install `dotdocker` globally using `npm`, run the following:
@@ -19,7 +32,9 @@ npm install -g dotdocker
 ## Usage
 
 Before Starting `dotdocker`, make sure you are not running any other software that is listening on
-ports 80, 443, or 19322. This will cause the command to fail.
+ports 53, 80, or 443. This will cause the command to fail. To allow the script to modify your
+systems DNS configuration, it may ask you to run the command with `sudo` the first time the script
+is run. Once configured, the script can be run with normal privileges.
 
 ```text
 Usage: dotdocker [options] [command]
