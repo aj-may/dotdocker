@@ -2,9 +2,10 @@ import program from 'commander';
 import start from './actions/start';
 import stop from './actions/stop';
 import restart from './actions/restart';
+import { version } from '../package.json';
 
 program
-  .version('1.0.0')
+  .version(version)
   .description('A utility to help setup a docker development environment with host based routing');
 
 program
