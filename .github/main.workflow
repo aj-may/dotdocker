@@ -23,6 +23,6 @@ action "If Master" {
 action "Release" {
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   needs = ["If Master"]
-  args = "run semantic-release"
+  args = "run semantic-release --unsafe-perm"
   secrets = ["GH_TOKEN", "NPM_TOKEN"]
 }
