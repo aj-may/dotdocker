@@ -31,7 +31,7 @@
     "format": "prettier --write \"**/*.{json,css,scss,md,html}\"",
     "lint": "eslint .",
     "lint:md": "markdownlint -i node_modules -i build .",
-    "build": "babel src -d build --copy-files && pkg --targets=node12-macos --out-path=dist .",
+    "build": "babel src -d build --copy-files && pkg --targets=node12-macos,node12-linux --out-path=dist .",
     "semantic-release": "semantic-release"
   },
   "bin": {
