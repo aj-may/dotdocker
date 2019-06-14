@@ -6,7 +6,10 @@
     [
       "@semantic-release/github",
       {
-        "assets": [{ "path": "dist/dotdocker", "label": "dotdocker" }]
+        "assets": [
+          { "path": "dist/dotdocker-macos", "label": "dotdocker-macos" },
+          { "path": "dist/dotdocker-linux", "label": "dotdocker-linux" }
+        ]
       }
     ]
   ]
