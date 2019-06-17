@@ -11,14 +11,7 @@ A utility to help setup a docker development environment with host based routing
 ### Using homebrew
 
 ```sh
-brew install aj-may/brew/dotdocker
-```
-
-or if you prefer to tap using ssh
-
-```sh
-brew tap aj-may/brew git@github.com:aj-may/brew.git
-brew install dotdocker
+brew install aj-may/dotdocker/dotdocker
 ```
 
 ### Using npm
