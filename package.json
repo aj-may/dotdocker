@@ -18,12 +18,12 @@
     "@commitlint/config-conventional": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-codfish": "^2.5.0",
-    "husky": "^2.4.0",
-    "lint-staged": "^8.2.0",
-    "markdownlint-cli": "^0.16.0",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "markdownlint-cli": "^0.17.0",
     "pkg": "^4.4.0",
     "prettier": "^1.18.2",
-    "semantic-release": "^15.13.12"
+    "semantic-release": "^15.13.16"
   },
   "scripts": {
     "dev": "babel-node src/index.js",
