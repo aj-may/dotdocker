@@ -7,6 +7,7 @@ A utility to help setup a docker development environment with host based routing
 [![MIT License](https://img.shields.io/npm/l/dotdocker.svg?style=flat)](https://github.com/aj-may/dotdocker/blob/master/LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat)](http://commitizen.github.io/cz-cli/)
+![GitHub All Releases](https://img.shields.io/github/downloads/aj-may/dotdocker/total.svg?style=flat)
 
 ## Installation
 
