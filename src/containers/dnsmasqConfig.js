@@ -1,25 +1,25 @@
-export default {
+export default port => ({
   Image: 'andyshinn/dnsmasq:latest',
   name: 'dotdocker-dnsmasq',
   Cmd: ['--address=/docker/127.0.0.1', '--log-facility=-'],
   ExposedPorts: {
-    '53/tcp': {},
-    '53/udp': {},
+    [`${port}/tcp`]: {},
+    [`${port}/udp`]: {},
   },
   HostConfig: {
     PortBindings: {
       '53/tcp': [
         {
-          HostPort: '53',
+          HostPort: `${port}`,
         },
       ],
       '53/udp': [
         {
-          HostPort: '53',
+          HostPort: `${port}`,
         },
       ],
     },
     RestartPolicy: { Name: 'always' },
     CapAdd: ['NET_ADMIN'],
   },
-};
+});
