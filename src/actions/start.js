@@ -36,6 +36,8 @@ const start = port =>
         ),
     },
     setupDNS(),
-  ]).run();
+  ]).run({
+    port,
+  });
 
 export default start;
