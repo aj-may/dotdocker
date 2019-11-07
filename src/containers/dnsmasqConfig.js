@@ -1,6 +1,9 @@
-export default port => ({
+export default (port = '53') => ({
   Image: 'andyshinn/dnsmasq:latest',
   name: 'dotdocker-dnsmasq',
+  Labels: {
+    port,
+  },
   Cmd: ['--address=/docker/127.0.0.1', '--log-facility=-'],
   ExposedPorts: {
     [`${port}/tcp`]: {},

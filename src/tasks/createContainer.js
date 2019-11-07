@@ -1,5 +1,5 @@
 import Docker from 'dockerode';
-import { getContainer } from '../utils';
+import { getContainer, removeContainer } from '../utils';
 
 const docker = new Docker();
 
@@ -8,8 +8,21 @@ const createContainer = containerConfig => ({
   task: async () => docker.createContainer(containerConfig),
   skip: async () => {
     try {
+      const { Labels } = containerConfig;
+      const port = Labels ? Labels.port || null : null;
       const container = await getContainer(containerConfig.name);
-      if (container) return 'Container already created';
+
+      if (container) {
+        const containerPort = container.Labels ? container.Labels.port || null : null;
+        const shouldUpsertContainer = containerPort && containerPort !== port;
+
+        if (shouldUpsertContainer) {
+          await removeContainer(container.Id);
+        } else {
+          return 'Container already created';
+        }
+      }
+
       return false;
     } catch (err) {
       if (err.code === 'ECONNREFUSED')
