@@ -13,12 +13,12 @@ export default (port = '53') => ({
     PortBindings: {
       '53/tcp': [
         {
-          HostPort: `${port}`,
+          HostPort: port,
         },
       ],
       '53/udp': [
         {
-          HostPort: `${port}`,
+          HostPort: port,
         },
       ],
     },
