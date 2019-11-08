@@ -4,19 +4,14 @@ import stop from './actions/stop';
 import restart from './actions/restart';
 import { version } from '../package.json';
 
-const isDarwin = process.platform === 'darwin';
-
 program
   .version(version)
   .description('A utility to help setup a docker development environment with host based routing');
 
 program
   .command('start')
-  .option('-p, --port <port>', 'port')
   .description('Pull and start the dotdocker containers and configure DNS')
-  .action(res => {
-    start(isDarwin ? res.port : 53);
-  });
+  .action(start);
 
 program
   .command('stop')

@@ -39,7 +39,6 @@ A utility to help setup a docker development environment with host based routing
 Options:
   -V, --version  output the version number
   -h, --help     output usage information
-  -p, --port     specify a port to run on
 
 Commands:
   start          Pull and start the proxy container and configure DNS

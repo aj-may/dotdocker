@@ -6,7 +6,9 @@ import setupDNS from '../tasks/setupDNS';
 import proxyConfig from '../containers/proxyConfig';
 import dnsmasqConfig from '../containers/dnsmasqConfig';
 
-const start = port =>
+const port = process.platform === 'darwin' ? 533 : 53;
+
+const start = () =>
   new Listr([
     {
       title: 'Start dotdocker containers',
