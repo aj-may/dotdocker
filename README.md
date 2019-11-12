@@ -29,7 +29,8 @@ npm install -g dotdocker
 
 Before Starting `dotdocker`, make sure you are not running any other software that is listening on
 ports 53, 80, or 443. This will cause the command to fail. To allow the script to modify your
-systems DNS configuration, it may ask you to run the command with `sudo`.
+systems DNS configuration, it may ask you to run the command with `sudo` the first time the script
+is run. Once configured, the script can be run with normal privileges.
 
 ```text
 Usage: dotdocker [options] [command]

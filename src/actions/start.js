@@ -6,8 +6,6 @@ import setupDNS from '../tasks/setupDNS';
 import proxyConfig from '../containers/proxyConfig';
 import dnsmasqConfig from '../containers/dnsmasqConfig';
 
-const port = process.platform === 'darwin' ? 533 : 53;
-
 const start = () =>
   new Listr([
     {
@@ -28,9 +26,9 @@ const start = () =>
               title: 'Start dnsmasq',
               task: () =>
                 new Listr([
-                  pullImage(dnsmasqConfig(port)),
-                  createContainer(dnsmasqConfig(port)),
-                  startContainer(dnsmasqConfig(port)),
+                  pullImage(dnsmasqConfig),
+                  createContainer(dnsmasqConfig),
+                  startContainer(dnsmasqConfig),
                 ]),
             },
           ],
@@ -38,8 +36,6 @@ const start = () =>
         ),
     },
     setupDNS(),
-  ]).run({
-    port,
-  });
+  ]).run();
 
 export default start;
