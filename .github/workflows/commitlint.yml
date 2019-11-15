@@ -1,0 +1,14 @@
+name: Lint Commit Messages
+
+on: pull_request
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - run: npm install --no-save
+      - run:
+          npm run lint:commit -- --from="origin/${{ github.base_ref }}"
+          --to="origin/${{github.head_ref }}"

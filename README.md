@@ -9,6 +9,16 @@ A utility to help setup a docker development environment with host based routing
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat)](http://commitizen.github.io/cz-cli/)
 ![GitHub All Releases](https://img.shields.io/github/downloads/aj-may/dotdocker/total.svg?style=flat)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Installation](#installation)
+  - [Using homebrew](#using-homebrew)
+  - [Using npm](#using-npm)
+- [Usage](#usage)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Installation
 
 ### Using homebrew
