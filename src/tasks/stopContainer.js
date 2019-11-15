@@ -6,13 +6,15 @@ const docker = new Docker();
 const stopContainer = ({ name }) => ({
   title: `Stopping ${name}`,
   task: async () => {
-    const { Id: id } = await getContainer(name);
-    return docker.getContainer(id).stop();
+    const { Id: id, State: state } = await getContainer(name);
+    const container = docker.getContainer(id);
+
+    if (state === 'running') await container.stop();
+    return container.remove();
   },
   skip: async () => {
     const container = await getContainer(name);
-    if (!container) throw Error('Container does not exist');
-    if (container.State === 'exited') return 'Container already stopped';
+    if (!container) return 'Container does not exist';
     return false;
   },
 });

@@ -1,21 +1,23 @@
+const port = process.platform === 'darwin' ? '533' : '53';
+
 export default {
   Image: 'andyshinn/dnsmasq:latest',
   name: 'dotdocker-dnsmasq',
   Cmd: ['--address=/docker/127.0.0.1', '--log-facility=-'],
   ExposedPorts: {
-    '53/tcp': {},
-    '53/udp': {},
+    [`${port}/tcp`]: {},
+    [`${port}/udp`]: {},
   },
   HostConfig: {
     PortBindings: {
       '53/tcp': [
         {
-          HostPort: '53',
+          HostPort: port,
         },
       ],
       '53/udp': [
         {
-          HostPort: '53',
+          HostPort: port,
         },
       ],
     },
