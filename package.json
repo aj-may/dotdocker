@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "A utility to help setup a docker development environment with host based routing",
   "dependencies": {
+    "@babel/runtime": "^7.7.2",
     "commander": "^2.20.0",
     "dockerode": "^2.5.8",
     "execa": "^1.0.0",
@@ -10,31 +11,22 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "eslint": "^5.16.0",
-    "eslint-config-codfish": "^2.5.0",
-    "husky": "^2.4.1",
-    "lint-staged": "^8.2.1",
+    "cod-scripts": "^3.3.0",
     "markdownlint-cli": "^0.17.0",
     "pkg": "^4.4.0",
-    "prettier": "^1.18.2",
     "semantic-release": "^15.13.16"
   },
   "scripts": {
-    "dev": "babel-node src/index.js",
-    "fix": "npm run format && npm run lint -- --fix",
-    "format": "prettier --write \"**/*.{json,css,scss,md,html}\"",
-    "lint": "eslint .",
-    "lint:md": "markdownlint -i node_modules -i build .",
     "build": "babel src -d build --copy-files && pkg --targets=node12-macos,node12-linux --out-path=dist .",
     "prepack": "npm run build",
-    "lint:ci": "npm run lint && npm run lint:md",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "build:watch": "npm run build -- --watch",
+    "format": "cod-scripts format",
+    "lint": "cod-scripts lint",
+    "lint:md": "markdownlint -i node_modules -i dist .",
+    "lint:commit": "cod-scripts commitlint",
+    "validate": "cod-scripts validate"
   },
   "bin": {
     "dotdocker": "./bin/dotdocker.js"
@@ -52,5 +44,16 @@
   "preferGlobal": true,
   "engines": {
     "node": ">= 12"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/cod-scripts/eslint.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cod-scripts pre-commit",
+      "commit-msg": "cod-scripts commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

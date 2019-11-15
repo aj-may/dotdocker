@@ -1,0 +1,25 @@
+name: Validate Code
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [12.x]
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: npm install --no-save
+      - run: npm run lint
+      - run: npm run lint:md

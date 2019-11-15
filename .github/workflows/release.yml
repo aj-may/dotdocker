@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v1
+        with:
+          version: 12.x
+
+      - run: |
+          npm install --no-save
+          npm run lint
+        env:
+          CI: true
+
+      - run: npm run build
+
+      - name: Release
+        uses: codfish/semantic-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
