@@ -18,7 +18,7 @@
     "semantic-release": "^15.13.16"
   },
   "scripts": {
-    "build": "babel src -d build --copy-files && pkg --targets=node12-macos,node12-linux --out-path=dist .",
+    "build": "cod-scripts build -d build --copy-files && pkg --targets=node12-macos,node12-linux --out-path=dist .",
     "prepack": "npm run build",
     "semantic-release": "semantic-release",
     "build:watch": "npm run build -- --watch",
