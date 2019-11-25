@@ -3,19 +3,18 @@
   "version": "0.0.0-development",
   "description": "A utility to help setup a docker development environment with host based routing",
   "dependencies": {
-    "@babel/runtime": "^7.7.2",
-    "commander": "^2.20.0",
-    "dockerode": "^2.5.8",
-    "execa": "^1.0.0",
+    "@babel/runtime": "^7.7.4",
+    "commander": "^4.0.1",
+    "dockerode": "^3.0.2",
+    "execa": "^3.4.0",
     "listr": "^0.14.3",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@babel/node": "^7.4.5",
     "cod-scripts": "^3.3.0",
-    "markdownlint-cli": "^0.17.0",
+    "markdownlint-cli": "^0.19.0",
     "pkg": "^4.4.0",
-    "semantic-release": "^15.13.16"
+    "semantic-release": "^15.13.31"
   },
   "scripts": {
     "build": "cod-scripts build -d build --copy-files && pkg --targets=node12-macos,node12-linux --out-path=dist .",
