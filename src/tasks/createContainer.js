@@ -5,7 +5,7 @@ const docker = new Docker();
 
 const createContainer = containerConfig => ({
   title: `Creating ${containerConfig.name}`,
-  task: async () => docker.createContainer(containerConfig),
+  task: () => docker.createContainer(containerConfig),
   skip: async () => {
     try {
       const container = await getContainer(containerConfig.name);
