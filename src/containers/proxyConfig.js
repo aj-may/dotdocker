@@ -14,6 +14,7 @@ export default {
     Binds: [
       '/var/run/docker.sock:/tmp/docker.sock:ro',
       `${resolve(homedir(), '.dotdocker/certs')}:/etc/nginx/certs:ro`,
+      `${resolve(homedir(), '.dotdocker/my_proxy.conf')}:/etc/nginx/conf.d/my_proxy.conf:ro`,
     ],
     PortBindings: {
       '19322/udp': [
