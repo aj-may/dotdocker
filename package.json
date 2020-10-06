@@ -7,6 +7,7 @@
     "commander": "^2.20.0",
     "dockerode": "^2.5.8",
     "execa": "^1.0.0",
+    "fs": "0.0.1-security",
     "listr": "^0.14.3",
     "lodash": "^4.17.11"
   },
