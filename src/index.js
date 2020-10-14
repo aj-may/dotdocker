@@ -24,4 +24,4 @@ program
   .action(restart);
 
 program.parse(process.argv);
-if (!program.args.length) program.help();
+if (program.rawArgs.length < 3) program.help();
