@@ -8,7 +8,7 @@ const nginxProxyBindings = fs.existsSync(nginxProxyPath)
   : [];
 
 export default {
-  Image: 'codekitchen/dinghy-http-proxy:latest',
+  Image: 'bitnami/configurable-http-proxy:latest',
   name: 'dotdocker-proxy',
   Env: ['CONTAINER_NAME=dotdocker-proxy'],
   ExposedPorts: {
