@@ -14,7 +14,7 @@
     "@babel/node": "^7.4.5",
     "cod-scripts": "^3.3.0",
     "markdownlint-cli": "^0.17.0",
-    "pkg": "^4.4.0",
+    "pkg": "^5.8.0",
     "semantic-release": "^15.13.16"
   },
   "scripts": {
